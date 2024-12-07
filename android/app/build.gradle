@@ -1,0 +1,92 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    namespace = "com.example.flutter_finix"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        applicationId = "com.example.flutter_finix"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 24
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+            release {
+                shrinkResources true
+                minifyEnabled true
+            }
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.8'
+    }
+
+    dependencies {
+        implementation 'androidx.core:core-ktx:1.13.1'
+
+        implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
+        implementation 'androidx.activity:activity-compose:1.9.3'
+        implementation 'androidx.appcompat:appcompat:1.7.0'
+        implementation 'androidx.navigation:navigation-runtime-ktx:2.8.4'
+        implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+        implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
+        implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
+        testImplementation 'junit:junit:4.13.2'
+        androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+
+        // Compose
+        implementation "androidx.compose.compiler:compiler:1.4.8"
+        debugImplementation 'androidx.compose.ui:ui-tooling:1.7.5'
+        implementation 'androidx.compose.ui:ui-viewbinding:1.7.5'
+        implementation 'androidx.compose.ui:ui-tooling-preview:1.7.5'
+        implementation 'androidx.compose.material3:material3:1.1.0-alpha04' // can only use this otherwise the textfields act weird
+        implementation "androidx.compose.animation:animation:1.7.5"
+
+        // Lifecycle dependencies
+        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
+        implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7"
+        implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.7"
+
+
+        //Finix Payment Library
+        implementation 'com.finix:finix-android-payment-sheet:0.3.9'
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation 'com.google.android.material:material:1.12.0'
+}

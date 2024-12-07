@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Finix Tokenization Demo</string>
+
+    <string name="daphneys_corner">Enter Details</string>
+    <string name="btn_tokenize">Add Card</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="my_corner">My Corner</string>
+    <string name="empty_string" />
+</resources>
